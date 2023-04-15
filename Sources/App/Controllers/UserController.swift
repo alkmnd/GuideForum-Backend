@@ -27,6 +27,9 @@ struct UserController: RouteCollection {
         protectedUsers.get("list-followers", use: listFollowers)
         protectedUsers.post("add-follower", use: addFollower)
     }
+    
+    
+    
     func listFollowers(req: Request) throws -> EventLoopFuture<[User.PublicData]> {
         guard let user = req.auth.get(User.self) else {
             throw Abort(.unauthorized)
